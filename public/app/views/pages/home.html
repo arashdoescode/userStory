@@ -1,0 +1,53 @@
+
+<div class="jumbotron text-center" ng-if="!main.loggedIn">
+	
+	<div>
+		<h1>If you have balls Sign up!</h1>
+	</div>
+
+	<div>
+		<p>Login to write your story</p>
+		<a href="/login" class="btn btn-primary">Login</a>
+	</div>
+</div>
+
+
+
+<div class="row" ng-if="main.loggedIn">
+
+	<div class="col-md-3">
+
+
+	</div>
+
+	<div class="col-md-4" ng-controller="StoryController as story">
+		<div class="row">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Write your Story</div>
+
+				<div class="panel-body">
+				<form ng-submit="story.createStory()">
+				<input class="form-control input-lg" type="text" ng-model="story.storyData.content" placeholder=".....">
+				
+				</form>
+				</div>
+			</div>
+
+			<div class="panel panel-success">
+				<div class="panel-heading">Your Stories</div>
+				<div class="panel-body" ng-repeat="each in story.stories | reverse">
+					<p>{{ each.content }}</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<div class="col-md-3">
+
+
+	</div>
+
+
+</div>
